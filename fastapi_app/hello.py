@@ -7,6 +7,9 @@ from .models import Base
 # Base.metadata.create_all(bind=engine)
 from .config import env_variables
 from alembic import command
+from alembic.config import Config
+
+command.upgrade(Config("alembic.ini"),revision="heads")
 
 
 origins=[
