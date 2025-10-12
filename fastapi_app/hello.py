@@ -9,7 +9,6 @@ from .config import env_variables
 from alembic import command
 
 
-
 origins=[
 "http://127.0.0.1:5500",
 ]
