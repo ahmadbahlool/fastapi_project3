@@ -9,7 +9,6 @@ from .config import env_variables
 from alembic import command
 from alembic.config import Config
 
-command.upgrade(Config("alembic.ini"),revision="heads")
 
 
 origins=[
