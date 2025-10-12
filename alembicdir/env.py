@@ -12,7 +12,7 @@ from alembic.config import Config
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-command.upgrade(config,revision="head")
+
 config.set_main_option("sqlalchemy.url",f"postgresql://{env_variables.dbusername}:{env_variables.dbpassword}@metro.proxy.rlwy.net:21465/{env_variables.dbname}")
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -24,6 +24,7 @@ if config.config_file_name is not None:
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 target_metadata = Base.metadata
+command.upgrade(config,revision="head")
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
