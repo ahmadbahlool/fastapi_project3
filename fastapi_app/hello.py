@@ -10,15 +10,15 @@ from .config import env_variables
 origins=[
 "http://127.0.0.1:5500",
 ]
-newapp=FastAPI()
-newapp.add_middleware(
+app=FastAPI()
+app.add_middleware(
   CORSMiddleware,
   allow_origins=origins,
   allow_methods=["GET"],
   allow_headers=["*"],
   allow_credentials=False
 )
-@newapp.get("/")
+@app.get("/")
 def returnst():
   return {"message":"success"}
 router=APIRouter()
@@ -27,5 +27,5 @@ router.include_router(products.router)
 router.include_router(authentication.router)
 router.include_router(votes.router)
 
-newapp.include_router(router)
+app.include_router(router)
 print(env_variables.dbhost)
