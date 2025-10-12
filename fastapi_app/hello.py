@@ -4,7 +4,7 @@ from .database import engine
 from .routes import users,products,votes
 from . import authentication
 from .models import Base
-# Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 from .config import env_variables
 
 origins=[
