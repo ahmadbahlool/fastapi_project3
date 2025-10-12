@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posts</title>
+</head>
+<script>
+  document.addEventListener("DOMContentLoaded",function(){
+         
+
+    document.querySelector("#btn1").addEventListener("click",function(){fetchdata()});
+  })
+  function fetchdata(){
+    console.log("hi")
+     data=fetch("http://localhost:8000/products/",{
+      method:'GET',
+      headers:{
+        "Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsImV4cCI6MTc2MDIwOTI4MH0.pKTvetQrI-O5xVd0BJcdGhSwTNg0XxyUgNks8ocb65w"
+      }
+     })
+     .then(function(data){
+      return data.json()
+     })
+     .then(function(response){
+      console.log(response)
+     })
+
+  }
+
+</script>
+<body>
+  <button id="btn1">Posts</button>
+
+  
+</body>
+</html>
