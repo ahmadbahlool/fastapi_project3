@@ -31,9 +31,9 @@ def verify_jwt_token(token:str,credentialexception):
   except JWTError:
     raise credentialexception
   
-def get_user(token:str,db:Session=Depends(get_db)):
+def get_user(token:str=Depends(oauth2_scheme),db:Session=Depends(get_db)):
   credentialexception=HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="could not validate credential",headers={"WWW-Authenticate":"Bearer"})
-  
+  print("token",token)
   userid=verify_jwt_token(token,credentialexception)
   user=db.query(User).get(userid)
   if user is None:

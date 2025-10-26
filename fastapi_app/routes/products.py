@@ -10,8 +10,8 @@ from ..utils import hashpassword
 from ..models import User,Product,Vote
 from ..database import get_db
 router=APIRouter(prefix="/products",tags=["Products"])
-@router.post("/",response_model=ProductOutput)
-def create_post(updatedata:ProductCreate,db:Session=Depends(get_db),user:int=Depends(get_user)):
+@router.post("/",response_model=ProductOutput,status_code=status.HTTP_201_CREATED)
+def create_product(updatedata:ProductCreate,db:Session=Depends(get_db),user:int=Depends(get_user)):
   
   product=Product(**updatedata.model_dump(),owner=user.userid)
   
@@ -35,7 +35,7 @@ def update_product(updatedata:ProductCreate,id:int,db:Session=Depends(get_db),us
   if singleproduct.first()==None:
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="your product not found")
   if singleproduct.first().owner!=user.userid:
-    raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="you are not allowed to update  this product")
+    raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="you are not allowed to update this product")
 
 
   singleproduct.update(updatedata.model_dump())
@@ -74,6 +74,5 @@ def get_products(search:str="",limit:int=0,offset:int=0,db:Session=Depends(get_d
   
   for i,product in enumerate(all_products,0):
       all_products[i]={"product":product[0],"likes":product[1]} 
-  print(all_products)
     
   return all_products

@@ -13,13 +13,12 @@ def create_user(userdata:UserCreate,db:Session=Depends(get_db)):
   userdata=userdata.model_dump()
   password=userdata["userpassword"]
   userdata["userpassword"]=hashpassword(password)
-  print(password)
   user=User(**userdata)
   db.add(user)
 
   db.commit()
   return user
-@router.get("/{id}",response_model=UserOutput)
+@router.get("/{id}/",response_model=UserOutput)
 def get_user(id:int,db:Session=Depends(get_db)):
   user=db.query(User).get({"userid":id})
   if user is None:

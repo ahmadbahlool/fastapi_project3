@@ -15,9 +15,9 @@ def login_user(data:OAuth2PasswordRequestForm=Depends(),db:Session=Depends(get_d
   user=db.query(User).filter(User.username==username).first()
   if user is not None:
     if validpassword(password,user.userpassword):
-      token=create_jwt_token({"userid":user.userid})
+      token=create_jwt_token({"userid":user.userid,"username":user.username})
       return {"access_token":token,"token_type":"bearer"}
     else:
-      raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="invalid credentials")
+      raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="invalid credentials")
   else:
-    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="invalid credentials")
+    raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="invalid credentials")

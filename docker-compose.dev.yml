@@ -1,0 +1,53 @@
+services:
+  backend:
+    build : .
+
+    environment:
+      - DBPASSWORD=ahmadhelllo
+      - DBHOST=database
+      - DBPORT=5432
+      - DBNAME=postgres
+      - DBUSERNAME=postgres
+      - SECRETKEY=09d25e094faa6ca2556c818266b7a9563b93f7099f6f0f4caa6cf63b88e8d3e0
+      - ACCESS_TOKEN_EXPIRES_MINUTES=30
+      - ALGORITHM=HS256
+
+
+
+    ports:
+      - 80:8000
+    command: bash -c "uvicorn fastapi_app.hello:app --host 0.0.0.0 --port 8000 --access-log --log-level debug --reload && alembic upgrade heads"
+    depends_on:
+      ['database']
+    volumes:
+      - ./:/mysourcecode
+
+
+      
+  database:
+    image: postgres
+    expose:
+      - 5432
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_PASSWORD:ahmadhelllo
+      - POSTGRES_User=postgres
+      - POSTGRES_DB=postgres 
+    volumes:
+      - postgresdatabase:/var/lib/postgresql/data
+
+
+volumes:
+   postgresdatabase:
+  
+
+
+      
+
+    
+      
+
+
+
+      

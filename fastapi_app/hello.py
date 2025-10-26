@@ -24,7 +24,7 @@ app.add_middleware(
 )
 @app.get("/")
 def returnst():
-  return {"message":"successful is me"}
+  return {"message":"ahmad bahlool"}
 router=APIRouter()
 router.include_router(users.router)
 router.include_router(products.router)
@@ -32,4 +32,3 @@ router.include_router(authentication.router)
 router.include_router(votes.router)
 
 app.include_router(router)
-print(env_variables.dbhost)

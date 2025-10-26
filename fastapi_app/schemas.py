@@ -37,6 +37,7 @@ class ProductsVoteOutput(BaseModel):
   productid:int
   userid:int 
 class ProductOutput(ProductsBase):
+  productdelivered:bool
   owner_user:UserOutput
 
   class Config:

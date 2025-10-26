@@ -44,7 +44,7 @@ def product_vote(votedata:ProductsVote,responseobject:Response,user=Depends(get_
       else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="No vote found")
   else:
-      raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="invalid foreign key")
+      raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="No product found")
 
     
     

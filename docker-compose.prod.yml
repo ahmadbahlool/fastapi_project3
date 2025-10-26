@@ -1,0 +1,47 @@
+services:
+  backend:
+    image : ahmadbahlool/fast_api-backend
+
+    environment:
+      - DBPASSWORD=${DBPASSWORD}
+      - DBHOST=${DBHOST}
+      - DBPORT= 5433
+      - DBNAME=${DBNAME}
+      - DBUSERNAME=${DBUSERNAME}
+      - SECRETKEY=${SECRETKEY}
+      - ACCESS_TOKEN_EXPIRES_MINUTES=${ACCESS_TOKEN_EXPIRES_MINUTES}
+      - ALGORITHM=${ALGORITHM}
+
+
+    ports:
+      - 80:8000
+    depends_on:
+      ['database']
+      
+  database:
+    image: postgres
+    expose:
+      - 5433
+    ports:
+      - 5433:5433
+    environment:
+      POSTGRES_PASSWORD: ${DBPASSWORD} 
+      POSTGRES_User: ${DBUSERNAME}
+      POSTGRES_DB : ${DBNAME}
+    volumes:
+      - postgresdatabase:/var/lib/postgresql/data
+
+
+volumes:
+   postgresdatabase:
+  
+
+
+      
+
+    
+      
+
+
+
+      
