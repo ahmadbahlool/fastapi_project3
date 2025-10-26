@@ -8,9 +8,10 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from fastapi.testclient import TestClient
 import pytest
+from fastapi_app.config import  env_variables
 from fastapi_app.hello import app
 
-sqlalchemyurl="postgresql://postgres:new_password@localhost:5432/fastapitest"
+sqlalchemyurl=env_variables.dburl
 engine=create_engine(url=sqlalchemyurl)
 session=sessionmaker(bind=engine,autoflush=True)
 @pytest.fixture

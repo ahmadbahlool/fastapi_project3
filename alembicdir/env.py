@@ -9,7 +9,9 @@ from fastapi_app.models import Base
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-config.set_main_option("sqlalchemy.url","postgresql://postgres:new_password@localhost:5432/fastapitest")
+# "postgresql://postgres:new_password@localhost:5432/fastapitest"
+config.set_main_option("sqlalchemy.url",env_variables.dburl)
+
 #f"postgresql://{env_variables.dbusername}:{env_variables.dbpassword}@{env_variables.dbhost}:{env_variables.dbport}/{env_variables.dbname}")
 
 # Interpret the config file for Python logging.
