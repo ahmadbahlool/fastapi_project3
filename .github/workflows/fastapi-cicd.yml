@@ -11,8 +11,23 @@ jobs:
   dummyfirstjob:
     runs-on: ubuntu-latest
     steps:
+
+
+        
       - name: check code being pushed
         uses: actions/checkout@v2
-      - name: print that code  is reached
-        run: echo "your code is on github succefully"
+      - name: pulling python version 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12' 
+      - name: upgrade pip
+        run: python -m pip install --upgrade pip
+      - name: Install all dependencies
+        run: pip install -r requirements.txt
+      - name : Run tests on ubuntu machines
+        run: pytest
+        
+
+
+
   
