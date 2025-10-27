@@ -11,29 +11,6 @@ jobs:
   dummyfirstjob:
     environment:
       name: testingenv
-
-
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_USER: postgres
-          # ${{secrets.DBUSERNAME}}
-          
-          POSTGRES_PASSWORD: postgres
-          #  ${{secrets.DBPASSWORD}}
-           
-          POSTGRES_DB: postgres
-          # ${{secrets.DBNAME}}
-          
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     env:
 
       DBPASSWORD: ${{secrets.DBPASSWORD}}
@@ -49,7 +26,32 @@ jobs:
       SECRETKEY: ${{secrets.SECRETKEY}}
       ACCESS_TOKEN_EXPIRES_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRES_MINUTES}}
       ALGORITHM: ${{secrets.ALGORITHM}}
-      DBURL: postgresql://postgres:postgres@localhost:5432/postgres
+      DBURL: ${{secrets.DBURL}}
+  
+
+
+
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: ${{secrets.DBUSERNAME}}
+          # 
+          
+          POSTGRES_PASSWORD: ${{secrets.DBPASSWORD}}
+          #  
+           
+          POSTGRES_DB: ${{secrets.DBNAME}}
+          # 
+          
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
       # ${{secrets.DBURL}}
       # 
 
