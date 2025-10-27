@@ -46,7 +46,7 @@ jobs:
       SECRETKEY: ${{secrets.SECRETKEY}}
       ACCESS_TOKEN_EXPIRES_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRES_MINUTES}}
       ALGORITHM: ${{secrets.ALGORITHM}}
-      DBURL: postgresql://postgres:postgres@postgres:5432/postgres
+      DBURL: postgresql://postgres:postgres@localhost:5432/postgres
       # ${{secrets.DBURL}}
 
     steps:
