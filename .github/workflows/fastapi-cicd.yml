@@ -9,17 +9,19 @@ on:
 
 jobs:
   dummyfirstjob:
+    environment:
+      name: testingenv
     env:
 
-      DBPASSWORD: BdtyEthyugsJJwsAYUwnIQyPTqTVObEZ
-      DBHOST: crossover.proxy.rlwy.net
-      DBPORT: 10968
-      DBNAME: railway
-      DBUSERNAME: postgres
-      SECRETKEY: 09d25e094faa6ca2556c818266b7a9563b93f7099f6f0f4caa6cf63b88e8d3e0
-      ACCESS_TOKEN_EXPIRES_MINUTES: 30
-      ALGORITHM: HS256
-      DBURL: postgresql://postgres:BdtyEthyugsJJwsAYUwnIQyPTqTVObEZ@crossover.proxy.rlwy.net:10968/railway
+      DBPASSWORD: ${{secrets.DBPASSWORD}}
+      DBHOST: ${{secrets.DBHOST}}
+      DBPORT: ${{secrets.DBPORT}}
+      DBNAME: ${{secrets.DBNAME}}
+      DBUSERNAME: ${{secrets.DBUSERNAME}}
+      SECRETKEY: ${{secrets.SECRETKEY}}
+      ACCESS_TOKEN_EXPIRES_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRES_MINUTES}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      DBURL: ${{secrets.DBURL}}
 
     runs-on: ubuntu-latest
     steps:

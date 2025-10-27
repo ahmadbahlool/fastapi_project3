@@ -9,7 +9,6 @@
 # import pytest
 # from fastapi_app.hello import app
 
-# sqlalchemyurl="postgresql://postgres:new_password@localhost:5432/fastapitest"
 # engine=create_engine(url=sqlalchemyurl)
 # session=sessionmaker(bind=engine,autoflush=True)
 # @pytest.fixture
