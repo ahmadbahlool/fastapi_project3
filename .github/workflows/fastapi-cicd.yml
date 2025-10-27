@@ -11,17 +11,7 @@ jobs:
   dummyfirstjob:
     environment:
       name: testingenv
-    env:
 
-      DBPASSWORD: ${{secrets.DBPASSWORD}}
-      DBHOST: ${{secrets.DBHOST}}
-      DBPORT: ${{secrets.DBPORT}}
-      DBNAME: ${{secrets.DBNAME}}
-      DBUSERNAME: ${{secrets.DBUSERNAME}}
-      SECRETKEY: ${{secrets.SECRETKEY}}
-      ACCESS_TOKEN_EXPIRES_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRES_MINUTES}}
-      ALGORITHM: ${{secrets.ALGORITHM}}
-      DBURL: ${{secrets.DBURL}}
 
     runs-on: ubuntu-latest
     services:
@@ -38,7 +28,17 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+    env:
 
+      DBPASSWORD: ${{secrets.DBPASSWORD}}
+      DBHOST: ${{secrets.DBHOST}}
+      DBPORT: ${{secrets.DBPORT}}
+      DBNAME: ${{secrets.DBNAME}}
+      DBUSERNAME: ${{secrets.DBUSERNAME}}
+      SECRETKEY: ${{secrets.SECRETKEY}}
+      ACCESS_TOKEN_EXPIRES_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRES_MINUTES}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      DBURL: ${{secrets.DBURL}}
 
     steps:
 
