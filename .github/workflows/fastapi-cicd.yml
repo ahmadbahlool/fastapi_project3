@@ -24,6 +24,22 @@ jobs:
       DBURL: ${{secrets.DBURL}}
 
     runs-on: ubuntu-latest
+    services:
+      database:
+        image: postgres
+        env:
+          POSTGRES_USER: ${{secrets.DBUSERNAME}}
+          POSTGRES_PASSWORD: ${{secrets.DBPASSWORD}}
+          POSTGRES_DB: ${{secrets.DBNAME}}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+
     steps:
 
 
