@@ -10,6 +10,7 @@ from alembic import command
 from alembic.config import Config
 
 
+
 origins=[
 "http://127.0.0.1:5500",
 ]
@@ -23,7 +24,7 @@ app.add_middleware(
 )
 @app.get("/")
 def returnst():
-  return {"message":"ahmad bahlool is my name"}
+  return {"message":"ahmad bahlool is"}
 router=APIRouter()
 router.include_router(users.router)
 router.include_router(products.router)
