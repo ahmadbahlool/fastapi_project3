@@ -24,7 +24,7 @@ app.add_middleware(
 )
 @app.get("/")
 def returnst():
-  return {"message":"ahmad bahlool is bad"}
+  return {"message":"ahmad bahlool is bad this is good"}
 router=APIRouter()
 router.include_router(users.router)
 router.include_router(products.router)
