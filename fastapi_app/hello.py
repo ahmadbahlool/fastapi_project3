@@ -9,7 +9,6 @@ from .config import env_variables
 from alembic import command
 from alembic.config import Config
 
-print(env_variables.dbhost)
 
 origins=[
 "http://127.0.0.1:5500",
