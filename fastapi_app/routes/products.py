@@ -55,7 +55,7 @@ def delete_product(id:int,db:Session=Depends(get_db),user:int=Depends(get_user))
   product.delete()
   db.commit()
   return {"detail":"deleted"}
-@router.get("/",response_model=List[ProductOut])
+@router.get("/",response_model=List[ProductOut],status_code=status.HTTP_202_ACCEPTED)
 def get_products(search:str="",limit:int=0,offset:int=0,db:Session=Depends(get_db),user:int=Depends(get_user)):
   if offset:
     all_products=db.query(Product).offset(offset=offset).limit(limit=limit if limit else None)
