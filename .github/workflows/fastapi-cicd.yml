@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  dummyfirstjob:
+  build-job:
     environment:
       name: testingenv
     env:
@@ -90,7 +90,12 @@ jobs:
             type=local,dest=temp/.buildx-cache
           
           tags: ${{vars.DOCKER_USERNAME}}/fastapi:latest
-
+  deploy-job:
+    needs: build-job
+    runs-on:  ubuntu-latest
+    steps:
+      - name: Making sure everything works
+        run: echo "everything good so far"
 
 
   
