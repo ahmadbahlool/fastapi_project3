@@ -92,6 +92,7 @@ jobs:
           tags: ${{vars.DOCKER_USERNAME}}/fastapi:latest
   deploy-job:
     needs: build-job
+    if: success()
     runs-on:  ubuntu-latest
     steps:
       - name: Checkout code
