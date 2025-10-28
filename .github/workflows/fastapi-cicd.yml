@@ -98,7 +98,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install vercel on maching
-        run: npm install vercel
+        run: npm install  -g vercel
       - name: Pull Vercel Environment Info
         run: vercel pull --yes --environment=production --token=9G741IgipZqgEuxlDqg5a5gC
 
